@@ -1,0 +1,17 @@
+truncation (Cắt bớt):
+
+Mục đích: Quyết định có cắt bớt chuỗi đầu vào hay không, và nếu có thì cắt như thế nào. Hầu hết các mô hình transformer (như BERT, RoBERTa,...) có giới hạn độ dài đầu vào (ví dụ: 512 token). truncation giúp xử lý các chuỗi dài hơn giới hạn này.
+
+Giá trị:
+
+False hoặc 'do_not_truncate' (mặc định): Không cắt bớt. Nếu chuỗi dài hơn giới hạn của mô hình, bạn có thể gặp lỗi.
+
+True hoặc 'longest_first': Cắt bớt theo nguyên tắc "dài nhất trước".
+
+Nếu bạn đưa vào một chuỗi: Cắt chuỗi đó cho đến khi nó đạt độ dài tối đa (max_length hoặc độ dài tối đa của mô hình).
+
+Nếu bạn đưa vào một cặp chuỗi (ví dụ: câu hỏi và ngữ cảnh): Cắt chuỗi dài hơn trong cặp cho đến khi tổng độ dài của cả hai chuỗi (cộng thêm các token đặc biệt như [CLS], [SEP]) đạt max_length. Tiếp tục cắt chuỗi dài hơn cho đến khi đạt được độ dài mong muốn.
+
+'only_first': Chỉ cắt chuỗi thứ nhất trong cặp chuỗi (hoặc batch). Chuỗi thứ hai không bị ảnh hưởng.
+
+'only_second': Chỉ cắt chuỗi thứ hai trong cặp chuỗi (hoặc batch). Chuỗi thứ nhất không bị ảnh hưởng.
